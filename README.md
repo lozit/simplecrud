@@ -40,6 +40,35 @@ Voir les logs des conteneurs
 Accéder à la base de données locales PostgreSQL en executer `psql` dans le conteneur
 `docker-compose exec database psql app app`
 
+## Mettre en place GIT
+
+Creez un compte si ce n'est pas déja fait sur github.com
+
+Installez [Github CLI](https://github.com/cli/cli#installation)
+
+Authentifiez-vous avec [gh auth login](https://cli.github.com/manual/gh_auth_login)
+
+`git add .` pour ajouter toutes les modifications au projet
+
+`git commit -m 'Initialisation du projet'` pour le premier commit
+
+`gh repo create` pour créer un repo sur Github et push le projet sur Github
+
+```
+$ gh repo create
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name simplecrud
+? Description 
+? Visibility Public
+✓ Created repository lozit/simplecrud on GitHub
+? Add a remote? Yes
+? What should the new remote be called? origin
+✓ Added remote git@github.com:lozit/simplecrud.git
+? Would you like to push commits from the current branch to "origin"? Yes
+✓ Pushed commits to git@github.com:lozit/simplecrud.git
+```
+
 ## Commandes de bases
 
 Liste des commandes du make bundle :
