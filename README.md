@@ -81,3 +81,19 @@ Va créer :
 
 Créer des classe d'entités
 `symfony console make:entity Livre`
+
+```
+titre : string / 255 / no
+resume : text / yes
+nbpages : integer / no
+genre : string / 255 / no
+```
+
+Migrer la base de données
+`symfony console make:migration`
+
+Mettre à jour la base de données locale
+`symfony console doctrine:migrations:migrate`
+
+Générer un formulaire
+`symfony console make:form LivreFormType Livre`
