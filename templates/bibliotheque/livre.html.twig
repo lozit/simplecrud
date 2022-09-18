@@ -9,7 +9,9 @@
     <p>{{ livre.resume }}</p>
     <p>{{ livre.nbpages }} pages</p>
     <p>genre : {{ livre.genre }}</p>
-    <p><a href="/editer/{{ livre.id }}">Editer</a> | <a href="/supprimer/{{ livre.id }}">Supprimer</a></p>
+    {% if is_granted('ROLE_ADMIN') %}
+      <p><a href="/editer/{{ livre.id }}">Editer</a> | <a href="/supprimer/{{ livre.id }}">Supprimer</a></p>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
