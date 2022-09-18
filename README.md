@@ -54,7 +54,7 @@ Authentifiez-vous avec [gh auth login](https://cli.github.com/manual/gh_auth_log
 
 `gh repo create` pour créer un repo sur Github et push le projet sur Github
 
-```
+```bash
 $ gh repo create
 ? What would you like to do? Push an existing local repository to GitHub
 ? Path to local repository .
@@ -82,7 +82,7 @@ Va créer :
 Créer des classe d'entités
 `symfony console make:entity Livre`
 
-```
+```bash
 titre : string / 255 / no
 resume : text / yes
 nbpages : integer / no
@@ -97,3 +97,24 @@ Mettre à jour la base de données locale
 
 Générer un formulaire
 `symfony console make:form LivreFormType Livre`
+
+## Sécuriser l'interface d'administration
+
+`symfony console make:user Admin` pour créer une entité user
+
+Puis suivre : <https://symfony.com/doc/current/security.html>
+
+Créer un contrôleur :
+`symfony console make:controller Login`
+
+Ajouter un user :
+
+Créer un hash de votre mot de passe : `symfony console security:hash-password`
+
+executer la requete SQL suivante dans psql ou avec un logiciel comme DBeaver :
+
+```SQL
+INSERT INTO admin (id, username, roles, password) VALUES (nextval('admin_id_seq'), 'admin', '["ROLE_ADMIN"]','$argon2id$v=19$m=65536,t=4,p=1$BQG+jovPcunctc30xG5PxQ$TiGbx451NKdo+g9vLtfkMy4KjASKSOcnNxjij4gTX1s');
+```
+
+Vous venez de créer un administrateur avec les identifiants admin/admin si vous avez copiez coller le code. Sinon vous pouvez remplacer le password par le hash créé plus haut.

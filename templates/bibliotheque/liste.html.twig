@@ -11,7 +11,9 @@
           <th>Titre</th>
           <th>Nb pages</th>
           <th>Genre</th>
-          <th>Actions</th>
+          {% if is_granted('ROLE_ADMIN') %}
+            <th>Actions</th>
+          {% endif %}
         </tr>
       </thead>
       <tbody>
@@ -20,7 +22,9 @@
             <td><a href="/livre/{{ livre.id }}">{{ livre.titre }}</a></td>
             <td>{{ livre.nbpages }}</td>
             <td>{{ livre.genre }}</td>
-            <td><a href="/editer/{{ livre.id }}">Editer</a> | <a href="/supprimer/{{ livre.id }}">Supprimer</a></td>
+            {% if is_granted('ROLE_ADMIN') %}
+              <td><a href="/editer/{{ livre.id }}">Editer</a> | <a href="/supprimer/{{ livre.id }}" onclick="return confirm('êtes-vous sûrs ?')">Supprimer</a></td>
+            {% endif %}
         </tr>
         {% endfor %}
       </tbody>

@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class BibliothequeController extends AbstractController
 {
@@ -45,6 +46,7 @@ class BibliothequeController extends AbstractController
     }
 
     #[Route('/editer/{id}', name: 'editer')]
+    #[Security("is_granted('ROLE_ADMIN')")]
     public function editer(Livre $livre, Request $request): Response
     {
         if ($livre) {
@@ -66,6 +68,7 @@ class BibliothequeController extends AbstractController
     }
 
     #[Route('/supprimer/{id}', name: 'supprimer')]
+    #[Security("is_granted('ROLE_ADMIN')")]
     public function supprimer(Livre $livre, Request $request, EntityManagerInterface $entityManager): Response
     {
         $this->entityManager->remove($livre);
@@ -74,6 +77,7 @@ class BibliothequeController extends AbstractController
     }
 
     #[Route('/ajout', name: 'ajout')]
+    #[Security("is_granted('ROLE_ADMIN')")]
     public function ajout(Request $request): Response
     {
         $livre = new Livre();
