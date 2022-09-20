@@ -40,6 +40,12 @@ Voir les logs des conteneurs
 Accéder à la base de données locales PostgreSQL en executer `psql` dans le conteneur
 `docker-compose exec database psql app app`
 
+Quelques commandes psql : 
+`\l` : liste toutes les bases de données
+`\c app` : se connecte à la BDD app
+`\dt` : liste toutes les tables
+`\d admin` : voir la structure de la table admin
+
 ## Mettre en place GIT
 
 Creez un compte si ce n'est pas déja fait sur github.com
