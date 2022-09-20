@@ -9,42 +9,42 @@ Bien entendu, c'est très simplifié pour l'exercice.
 
 ## Démarrage du projet
 
-Créer le projet
+Créer le projet  
 `symfony new simplecrud --version=6.0 --php=8.1 --webapp --docker --cloud`
 
-Aller dans le dossier du projet
+Aller dans le dossier du projet  
 `cd simplecrud`
 
-Démarrer le serveur web
+Démarrer le serveur web  
 `symfony server:start -d`
 
-Consulter les log
+Consulter les log  
 `symfony server:log`
 
 ## Configuration de la base de données avec Docker
 
 Configurer un nom de Base de données, de User et de Mot de passe dans `/docker-compose.yml`
 
-Modifier `DATABASE_URL` dans le fichier `.env`
+Modifier `DATABASE_URL` dans le fichier `.env`  
 Vous pouvez aussi créer un fichier `.env.local` qui correspond à votre config locale (et qui sera ignorer dans Git).
 
-Démarrer Docker Compose
+Démarrer Docker Compose  
 `docker-compose up -d`
 
-Voir l'état des conteneurs
+Voir l'état des conteneurs  
 `docker-compose ps`
 
-Voir les logs des conteneurs
+Voir les logs des conteneurs  
 `docker-compose logs`
 
-Accéder à la base de données locales PostgreSQL en executer `psql` dans le conteneur
+Accéder à la base de données locales PostgreSQL en executer `psql` dans le conteneur  
 `docker-compose exec database psql app app`
 
-Quelques commandes psql : 
-`\l` : liste toutes les bases de données
-`\c app` : se connecte à la BDD app
-`\dt` : liste toutes les tables
-`\d admin` : voir la structure de la table admin
+Quelques commandes psql :  
+`\l` : liste toutes les bases de données  
+`\c app` : se connecte à la BDD app  
+`\dt` : liste toutes les tables  
+`\d admin` : voir la structure de la table admin  
 
 ## Mettre en place GIT
 
@@ -77,15 +77,15 @@ $ gh repo create
 
 ## Commandes de bases
 
-Liste des commandes du make bundle :
+Liste des commandes du make bundle :  
 `symfony console list make`
 
-Créer un contrôleur :
-`symfony console make:controller BibliothequeController`
-Va créer :
+Créer un contrôleur :  
+`symfony console make:controller BibliothequeController`  
+Va créer :  
 `src/Controller/BibliothequeController.php`
 
-Créer des classe d'entités
+Créer des classe d'entités  
 `symfony console make:entity Livre`
 
 ```bash
@@ -95,13 +95,13 @@ nbpages : integer / no
 genre : string / 255 / no
 ```
 
-Migrer la base de données
+Migrer la base de données  
 `symfony console make:migration`
 
-Mettre à jour la base de données locale
+Mettre à jour la base de données locale  
 `symfony console doctrine:migrations:migrate`
 
-Générer un formulaire
+Générer un formulaire  
 `symfony console make:form LivreFormType Livre`
 
 ## Sécuriser l'interface d'administration
@@ -110,7 +110,7 @@ Générer un formulaire
 
 Puis suivre : <https://symfony.com/doc/current/security.html>
 
-Créer un contrôleur :
+Créer un contrôleur :  
 `symfony console make:controller Login`
 
 Ajouter un user :
